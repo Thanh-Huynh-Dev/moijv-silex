@@ -10,13 +10,13 @@ $console = new Application('My Silex Application', 'n/a');
 $console->getDefinition()->addOption(new InputOption('--env', '-e', InputOption::VALUE_REQUIRED, 'The Environment name.', 'dev'));
 $console->setDispatcher($app['dispatcher']);
 $console
-    ->register('my-command')
+    ->register('my-command')// pour créer une nouvelle commande
     ->setDefinition(array(
         // new InputOption('some-option', null, InputOption::VALUE_NONE, 'Some help'),
     ))
     ->setDescription('My command description')
     ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
-        // do something php bin/console my-command
+        // do something  pour tester dans la commande php bin/console my-command
     })
 ;
 
