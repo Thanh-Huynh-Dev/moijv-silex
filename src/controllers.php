@@ -5,8 +5,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 //Request::setTrustedProxies(array('127.0.0.1'));
+
+require __DIR__.'/controllers_admin.php';
 
 $app->before(function() use($app){
         $token = $app['security.token_storage']->getToken();
@@ -45,9 +48,12 @@ $app->get('/login', function(Request $request) use ($app) {
 $app->match('/register', function(Request $request) use ($app){
     $user = new \Entity\User();
     
-    var_dump($user);
-    
-    $form = $app['form.factory']->createBuilder(\FormType\UserType::class, $user)
+    $form = $app['form.factory']->createBuilder(\FormType\UserType::class, $user, [
+        'validation_groups' => ['registration']
+    ])      
+            ->add('submit', SubmitType::class, [
+               'label' => 'Enregistrer'
+           ])
             ->getForm();
     
     $form->handleRequest($request);// pour traiter la request

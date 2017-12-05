@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>{% block title 'Admin' %}</title>
+        {# équivalent à {% block title %}Admin {% endblock %} #}
+    </head>
+    <body>
+        <h1>{{ block ('title') }}</h1>
+        <div>
+            <a href="{{path('admin_logoutadmin')}}">Déconnexion</a>
+            <a href="{{path('admin_userlist')}}">Liste d'utilisateurs</a>
+        </div>
+        <div class ="content">
+            {% block content %} {% endblock %}
+        </div>
+    </body>
+</html>

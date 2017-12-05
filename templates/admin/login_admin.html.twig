@@ -1,0 +1,47 @@
+{% extends "admin/layout_admin.html.twig" %}
+
+{% block content %}
+    <form class="form" method="POST" action="{{ path('admin_login_check')}}">
+                            <div class="header header-primary text-center">
+                                <h4>Sign In</h4>
+                                
+                            </div>
+                         
+                            <div class="content">
+                                
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">face</i>
+                                    </span>
+                                    <div class="form-group is-empty"><input type="text" class="form-control" name="_username" value="{{ last_username }}"placeholder="Nom d'utilisateur..."><span class="material-input"></span></div>
+                                </div>
+
+
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">lock_outline</i>
+                                    </span>
+                                    <div class="form-group is-empty"><input type="password" name="_password" value="" placeholder="Password..." class="form-control"><span class="material-input"></span></div>
+                                </div>
+                                {% if error %}
+                                    <div class="alert alert-danger">
+                                        {{ error | trans }} {# <?php echo trans($error) ?> #}
+                                    </div>
+                                {% endif %}
+
+                                <!-- If you want to add a checkbox to this form, uncomment this code
+
+                                <div class="checkbox">
+                                        <label>
+                                                <input type="checkbox" name="optionsCheckboxes" checked>
+                                                Subscribe to newsletter
+                                        </label>
+                                </div> -->
+                            </div>
+                            <div class="footer text-center">
+                                <button type="submit" class="btn btn-simple btn-primary btn-lg">Connexion</button>
+                            </div>
+                        </form>
+
+{% endblock %}
+
