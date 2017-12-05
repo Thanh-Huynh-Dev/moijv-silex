@@ -25,7 +25,9 @@
         "cevantime/simpledao": "@dev"
     },
     "autoload": {
-        "psr-0": { "": "src/" }
+        "psr-0": {
+            "": "src/"
+        }
     },
     "extra": {
         "branch-alias": {
